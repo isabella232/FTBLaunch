@@ -16,6 +16,11 @@ import net.ftb.gui.LaunchFrame;
 import net.ftb.gui.panes.ModpacksPane;
 
 public class ModPackFilterDialog extends JDialog {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -2870109210606360688L;
+	
 	private JPanel panel = new JPanel();
 	private JLabel typeLbl = new JLabel("Mod Pack Type:"), originLbl = new JLabel("Mod Pack Origin:"), packLbl = new JLabel("Compatible Pack:"), lblModPackAval = new JLabel("Mod Pack Avaliability:");
 	private JComboBox typeBox = new JComboBox(new String[] {"Client", "Server"}), 
@@ -122,5 +127,25 @@ public class ModPackFilterDialog extends JDialog {
 				setVisible(false);
 			}
 		});
+	}
+
+	public JLabel getPackLbl() {
+
+		return packLbl;
+	}
+
+	public void setPackLbl(JLabel packLbl) {
+
+		this.packLbl = packLbl;
+	}
+
+	public JComboBox getCompatibleBox() {
+
+		return compatibleBox;
+	}
+
+	public void setCompatibleBox(JComboBox compatibleBox) {
+
+		this.compatibleBox = compatibleBox;
 	}
 }

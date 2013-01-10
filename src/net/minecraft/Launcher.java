@@ -8,6 +8,11 @@ import java.util.Map;
 import java.util.TreeMap;
 
 public class Launcher extends Applet implements AppletStub {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -1043359054565682835L;
+	
 	private Applet wrappedApplet;
 	private URL documentBase;
 	private boolean active = false;

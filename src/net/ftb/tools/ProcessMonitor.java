@@ -14,13 +14,23 @@ public class ProcessMonitor implements Runnable {
 		this.onComplete = onComplete;
 	}
 
+	public boolean isComplete() {
+
+		return complete;
+	}
+
+	public void setComplete(boolean complete) {
+
+		this.complete = complete;
+	}
+
 	public void run() {
 		try{
 			proc.waitFor();
 		} catch (InterruptedException e){
 			Logger.logError(e.getMessage(), e);
 		}
-		complete = true;
+		setComplete(true);
 		onComplete.run();
 	}
 

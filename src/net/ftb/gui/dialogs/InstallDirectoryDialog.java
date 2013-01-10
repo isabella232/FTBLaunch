@@ -19,6 +19,11 @@ import net.ftb.locale.I18N;
 import net.ftb.util.OSUtils;
 
 public class InstallDirectoryDialog extends JDialog {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -5464126274440250988L;
+	
 	private JLabel lblInstallFolder;
 	private JTextField installFolderTextField;
 	private JLabel text = new JLabel("<html><body><center><font size=\"3\"><strong>Since this is your first time using the launcher, we suggest setting the install directory.</strong></font></center></body></html>");

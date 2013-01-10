@@ -34,6 +34,11 @@ import net.ftb.util.OSUtils;
 import net.ftb.util.TrackerUtils;
 
 public class ModManager extends JDialog {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 7266883808285812577L;
+	
 	public static boolean update = false, backup = false, erroneous = false, upToDate = false;
 	private static String curVersion = "";
 	private JPanel contentPane;

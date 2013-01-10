@@ -15,6 +15,11 @@ import net.ftb.gui.panes.ModpacksPane;
 import net.ftb.gui.panes.TexturepackPane;
 
 public class SearchDialog extends JDialog {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 3946652439824900408L;
+	
 	public static String lastPackSearch = "", lastMapSearch = "", lastTextureSearch = "";
 	public JTextField searchBar = new JTextField();
 

@@ -29,6 +29,11 @@ import net.ftb.locale.I18N;
 import net.ftb.util.OSUtils;
 
 public class EditModPackDialog extends JDialog {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -5912486164321597070L;
+
 	private final JTabbedPane tabbedPane = new JTabbedPane(JTabbedPane.TOP);
 
 	private JPanel modsFolderPane = new JPanel();

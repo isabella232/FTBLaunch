@@ -15,7 +15,6 @@ import java.util.List;
 
 import net.ftb.data.ModPack;
 import net.ftb.data.Settings;
-import net.ftb.gui.panes.ModpacksPane;
 import net.ftb.log.LogLevel;
 import net.ftb.log.Logger;
 import net.ftb.util.OSUtils;

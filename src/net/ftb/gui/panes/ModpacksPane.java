@@ -39,24 +39,30 @@ import net.ftb.util.OSUtils;
 public class ModpacksPane extends JPanel implements ILauncherPane, ModPackListener {
 	private static final long serialVersionUID = 1L;
 
-	private static JPanel packs;
-	public static ArrayList<JPanel> packPanels;
-	private static JScrollPane packsScroll;
-	private static JLabel splash;
+	private JPanel packs;
+	public ArrayList<JPanel> packPanels;
+	private JScrollPane packsScroll;
+	private JLabel splash;
 
-	private static JLabel typeLbl;
+	private JLabel typeLbl;
 	private JButton filter, editModPack;
 	private static int selectedPack = 0;
 	private static boolean modPacksAdded = false;
 	private static HashMap<Integer, ModPack> currentPacks = new HashMap<Integer, ModPack>();
 	private final ModpacksPane instance = this;
-	private static JEditorPane packInfo;
+	private JEditorPane packInfo;
 
 	//	private JLabel loadingImage;
-	public static String type = "Client", origin = "All", mcVersion = "All", avaliability = "All";
+	public String type = "Client";
+
+	public String origin = "All";
+
+	public String mcVersion = "All";
+
+	public String avaliability = "All";
 	public static boolean loaded = false;
 
-	private static JScrollPane infoScroll;
+	private JScrollPane infoScroll;
 
 	public ModpacksPane () {
 		super();
@@ -178,7 +184,7 @@ public class ModpacksPane extends JPanel implements ILauncherPane, ModPackListen
 	/*
 	 * GUI Code to add a modpack to the selection
 	 */
-	public static void addPack(ModPack pack) {
+	public void addPack(ModPack pack) {
 		if (!modPacksAdded) {
 			modPacksAdded = true;
 			packs.removeAll();
@@ -237,7 +243,7 @@ public class ModpacksPane extends JPanel implements ILauncherPane, ModPackListen
 		updatePacks();
 	}
 
-	public static void sortPacks() {
+	public void sortPacks() {
 		packPanels.clear();
 		packs.removeAll();
 		currentPacks.clear();
@@ -255,7 +261,7 @@ public class ModpacksPane extends JPanel implements ILauncherPane, ModPackListen
 		updatePacks();
 	}
 
-	private static void updatePacks() {
+	private void updatePacks() {
 		for(int i = 0; i < packPanels.size(); i++) {
 			if(selectedPack == i) {
 				String mods = "";
@@ -282,7 +288,7 @@ public class ModpacksPane extends JPanel implements ILauncherPane, ModPackListen
 		return modPacksAdded ? getIndex() : -1;
 	}
 
-	public static void updateFilter() {
+	public void updateFilter() {
 		String filterTextColor = LauncherStyle.getColorAsString(LauncherStyle.getCurrentStyle().filterTextColor);
 		String filterInnerTextColor = LauncherStyle.getColorAsString(LauncherStyle.getCurrentStyle().filterInnerTextColor);
 		String typeLblText = "<html><body>";
@@ -313,23 +319,23 @@ public class ModpacksPane extends JPanel implements ILauncherPane, ModPackListen
 		}
 	}
 
-	private static boolean avaliabilityCheck(ModPack pack) {
+	private boolean avaliabilityCheck(ModPack pack) {
 		return (avaliability.equalsIgnoreCase("all")) || (avaliability.equalsIgnoreCase("public") && !pack.isPrivatePack()) || (avaliability.equalsIgnoreCase("private") && pack.isPrivatePack());
 	}
 
-	private static boolean mcVersionCheck(ModPack pack) {
+	private boolean mcVersionCheck(ModPack pack) {
 		return (mcVersion.equalsIgnoreCase("all")) || (mcVersion.equalsIgnoreCase(pack.getMcVersion()));
 	}
 
-	private static boolean typeCheck(ModPack pack) {
+	private boolean typeCheck(ModPack pack) {
 		return (type.equalsIgnoreCase("client")) || (type.equalsIgnoreCase("server") && !pack.getServerUrl().isEmpty());
 	}
 
-	private static boolean originCheck(ModPack pack) {
+	private boolean originCheck(ModPack pack) {
 		return (origin.equalsIgnoreCase("all")) || (origin.equalsIgnoreCase("ftb") && pack.getAuthor().equalsIgnoreCase("the ftb team")) || (origin.equalsIgnoreCase("3rd party") && !pack.getAuthor().equalsIgnoreCase("the ftb team"));
 	}
 
-	private static boolean textSearch(ModPack pack) {
+	private boolean textSearch(ModPack pack) {
 		String searchString = SearchDialog.lastPackSearch.toLowerCase();
 		return ((searchString.isEmpty()) || pack.getName().toLowerCase().contains(searchString) || pack.getAuthor().toLowerCase().contains(searchString));
 	}

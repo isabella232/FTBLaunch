@@ -83,6 +83,11 @@ import net.ftb.workers.GameUpdateWorker;
 import net.ftb.workers.LoginWorker;
 
 public class LaunchFrame extends JFrame {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -3944635421977904841L;
+	
 	private LoginResponse RESPONSE;
 	private NewsPane newsPane;
 	public static JPanel panel;
@@ -670,7 +675,7 @@ public class LaunchFrame extends JFrame {
 	protected void installMods(String modPackName) throws IOException {
 		String installpath = Settings.getSettings().getInstallPath();
 		String temppath = OSUtils.getDynamicStorageLocation();
-		ModPack pack = ModPack.getPack(modPacksPane.getSelectedModIndex());
+		ModPack pack = ModPack.getPack(ModpacksPane.getSelectedModIndex());
 		Logger.logInfo("dirs mk'd");
 		File source = new File(temppath, "ModPacks/" + pack.getDir() + "/.minecraft");
 		if(!source.exists()) {
@@ -754,35 +759,35 @@ public class LaunchFrame extends JFrame {
 	 * @return - Outputs selected modpack index
 	 */
 	public static int getSelectedModIndex() {
-		return instance.modPacksPane.getSelectedModIndex();
+		return ModpacksPane.getSelectedModIndex();
 	}
 
 	/**
 	 * @return - Outputs selected map index
 	 */
 	public static int getSelectedMapIndex() {
-		return instance.mapsPane.getSelectedMapIndex();
+		return MapsPane.getSelectedMapIndex();
 	}
 
 	/**
 	 * @return - Outputs selected texturepack index
 	 */
 	public static int getSelectedTexturePackIndex() {
-		return instance.tpPane.getSelectedTexturePackIndex();
+		return TexturepackPane.getSelectedTexturePackIndex();
 	}
 
 	/**
 	 * @return - Outputs selected map install index
 	 */
 	public static int getSelectedMapInstallIndex() {
-		return instance.mapInstallLocation.getSelectedIndex();
+		return LaunchFrame.mapInstallLocation.getSelectedIndex();
 	}
 
 	/**
 	 * @return - Outputs selected texturepack install index
 	 */
 	public static int getSelectedTPInstallIndex() {
-		return instance.tpInstallLocation.getSelectedIndex();
+		return LaunchFrame.tpInstallLocation.getSelectedIndex();
 	}
 
 	/**
@@ -823,12 +828,12 @@ public class LaunchFrame extends JFrame {
 		Logger.logInfo(ModPack.getSelectedPack().getDir());
 		ModManager man = new ModManager(new JFrame(), true);
 		man.setVisible(true);
-		if(man.erroneous) {
+		if(ModManager.erroneous) {
 			return false;
 		}
 		try {
 			installMods(ModPack.getSelectedPack().getDir());
-			man.cleanUp();
+			ModManager.cleanUp();
 		} catch (IOException e) { }
 		return true;
 	}

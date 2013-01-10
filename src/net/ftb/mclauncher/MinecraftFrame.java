@@ -3,7 +3,6 @@ package net.ftb.mclauncher;
 import java.applet.Applet;
 import java.awt.Color;
 import java.awt.Dimension;
-import java.awt.Rectangle;
 import java.awt.Toolkit;
 import java.awt.event.ComponentEvent;
 import java.awt.event.ComponentListener;
@@ -65,6 +64,7 @@ public class MinecraftFrame extends JFrame implements WindowListener {
 		});
 	}
 
+	@SuppressWarnings({ "static-access", "deprecation" })
 	public void start(Applet mcApplet, String user, String session) {
 		JLabel label = new JLabel();
 		Thread animation = new Thread();

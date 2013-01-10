@@ -56,7 +56,7 @@ public class GoogleAnalytics {
 		StringBuilder sb = new StringBuilder();
 		sb.append(URL_PREFIX);
 
-		long now = System.currentTimeMillis();
+		//long now = System.currentTimeMillis();
 
 		sb.append("?utmwv=").append(getGoogleAnalyticsVersion()); // version
 		sb.append("&utmn=").append(random.nextInt()); // random int so no caching

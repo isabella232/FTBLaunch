@@ -20,10 +20,6 @@ import javax.swing.JToggleButton;
 import javax.swing.border.EmptyBorder;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
-import javax.swing.text.AttributeSet;
-import javax.swing.text.BadLocationException;
-import javax.swing.text.DocumentFilter;
-import javax.swing.text.PlainDocument;
 
 import net.ftb.data.Settings;
 import net.ftb.gui.ChooseDir;
@@ -33,8 +29,14 @@ import net.ftb.locale.I18N;
 import net.ftb.log.Logger;
 
 public class OptionsPane extends JPanel implements ILauncherPane {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -7649017956185541739L;
+	
 	private JToggleButton tglbtnForceUpdate;
 	private JButton installBrowseBtn, advancedOptionsBtn;
+	@SuppressWarnings("unused")
 	private JLabel lblInstallFolder, lblRamMaximum, lblLocale, currentRam, minecraftSize, lblX;
 	private JSlider ramMaximum;
 	private JComboBox locale;

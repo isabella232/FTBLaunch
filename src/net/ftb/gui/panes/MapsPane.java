@@ -36,19 +36,24 @@ import net.ftb.log.Logger;
 import net.ftb.util.OSUtils;
 
 public class MapsPane extends JPanel implements ILauncherPane, MapListener {
-	private static JPanel maps;
-	public static ArrayList<JPanel> mapPanels;
-	private static JScrollPane mapsScroll;
-	private static JLabel splash;
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 6342142597740824592L;
+	
+	private JPanel maps;
+	public ArrayList<JPanel> mapPanels;
+	private JScrollPane mapsScroll;
+	private JLabel splash;
 
-	private static JLabel typeLbl;
+	private JLabel typeLbl;
 	private JButton filter;
 	private static int selectedMap = 0;
 	private static boolean mapsAdded = false;
-	public static String type = "Client", origin = "All", compatible = "All";
+	public String type = "Client", origin = "All", compatible = "All";
 	private final MapsPane instance = this;
 
-	private static JEditorPane mapInfo;
+	private JEditorPane mapInfo;
 
 	public static boolean loaded = false;
 
@@ -156,7 +161,7 @@ public class MapsPane extends JPanel implements ILauncherPane, MapListener {
 	/*
 	 * GUI Code to add a map to the selection
 	 */
-	public static void addMap(Map map) {
+	public void addMap(Map map) {
 		if (!mapsAdded) {
 			mapsAdded = true;
 			maps.removeAll();
@@ -213,7 +218,7 @@ public class MapsPane extends JPanel implements ILauncherPane, MapListener {
 		updateMaps();
 	}
 
-	public static void sortMaps() {
+	public void sortMaps() {
 		mapPanels.clear();
 		maps.removeAll();
 		currentMaps.clear();
@@ -243,7 +248,7 @@ public class MapsPane extends JPanel implements ILauncherPane, MapListener {
 		updateMaps();
 	}
 
-	private static void updateMaps() {
+	private void updateMaps() {
 		for (int i = 0; i < mapPanels.size(); i++) {
 			if(selectedMap == i) {
 				String packs = "";
@@ -271,7 +276,7 @@ public class MapsPane extends JPanel implements ILauncherPane, MapListener {
 		return mapsAdded ? getIndex() : -1;
 	}
 
-	public static void updateFilter() {
+	public void updateFilter() {
 		// TODO: Show Modpack specific filtering
 		String filterTextColor = LauncherStyle.getColorAsString(LauncherStyle.getCurrentStyle().filterTextColor);
 		String filterInnerTextColor = LauncherStyle.getColorAsString(LauncherStyle.getCurrentStyle().filterInnerTextColor);
@@ -294,7 +299,7 @@ public class MapsPane extends JPanel implements ILauncherPane, MapListener {
 		return (currentMaps.size() > 0) ? currentMaps.get(selectedMap).getIndex() : selectedMap;
 	}
 
-	private static int getMapNum() {
+	private int getMapNum() {
 		if(currentMaps.size() > 0) {
 			if(!origin.equalsIgnoreCase("all")) {
 				return currentMaps.get((mapPanels.size() - 1)).getIndex();
@@ -307,15 +312,15 @@ public class MapsPane extends JPanel implements ILauncherPane, MapListener {
 		filter.setText(I18N.getLocaleString("FILTER_SETTINGS"));
 	}
 
-	private static boolean originCheck(Map map) {
+	private boolean originCheck(Map map) {
 		return (origin.equalsIgnoreCase("all")) || (origin.equalsIgnoreCase("ftb") && map.getAuthor().equalsIgnoreCase("the ftb team")) || (origin.equalsIgnoreCase("3rd party") && !map.getAuthor().equalsIgnoreCase("the ftb team"));
 	}
 
-	private static boolean compatibilityCheck(Map map) {
+	private boolean compatibilityCheck(Map map) {
 		return (compatible.equals("All") || map.isCompatible(compatible));
 	}
 
-	private static boolean textSearch(Map map) {
+	private boolean textSearch(Map map) {
 		String searchString = SearchDialog.lastMapSearch.toLowerCase();
 		return ((searchString.isEmpty()) || map.getName().toLowerCase().contains(searchString) || map.getAuthor().toLowerCase().contains(searchString));
 	}

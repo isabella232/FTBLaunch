@@ -27,6 +27,11 @@ public class ImageAndTextIcon implements Icon {
 	String description = null;
 
 	protected final static Component component = new Component() {
+
+		/**
+		 * 
+		 */
+		private static final long serialVersionUID = -2557882971456522738L;
 	};
 	protected final static MediaTracker tracker = new MediaTracker(component);
 
@@ -319,6 +324,11 @@ public class ImageAndTextIcon implements Icon {
 		/*
 		 * AccessibleContest implementation -----------------
 		 */
+
+		/**
+		 * 
+		 */
+		private static final long serialVersionUID = 8658877542518114353L;
 
 		/**
 		 * Gets the role of this object.

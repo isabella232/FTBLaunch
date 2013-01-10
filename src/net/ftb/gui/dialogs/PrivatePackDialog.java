@@ -6,8 +6,6 @@ import java.awt.event.ActionListener;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Arrays;
-
 import javax.swing.JButton;
 import javax.swing.JDialog;
 import javax.swing.JEditorPane;
@@ -23,6 +21,11 @@ import net.ftb.util.FileUtils;
 import net.ftb.util.OSUtils;
 
 public class PrivatePackDialog extends JDialog {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -255622429732999592L;
+	
 	private JTextField textField = new JTextField();
 	private JButton btnRemove = new JButton("Remove");
 	private JButton btnAdd = new JButton("Add");

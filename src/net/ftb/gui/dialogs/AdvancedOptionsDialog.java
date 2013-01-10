@@ -22,6 +22,11 @@ import net.ftb.log.Logger;
 import net.ftb.util.DownloadUtils;
 
 public class AdvancedOptionsDialog extends JDialog {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 6528553243736083064L;
+	
 	private JButton exitBtn;
 	private JTextField minecraftX, minecraftY, xPosField, yPosField, additionalJavaOptions;
 	private JCheckBox autoMaxCheck, snooper;

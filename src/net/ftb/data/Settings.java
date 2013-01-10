@@ -24,6 +24,11 @@ import net.ftb.log.Logger;
 import net.ftb.util.OSUtils;
 
 public class Settings extends Properties {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1670224303064041809L;
+	
 	private static Settings settings;
 	private File configFile;
 	private boolean forceUpdate = false;

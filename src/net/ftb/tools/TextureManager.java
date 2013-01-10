@@ -33,6 +33,11 @@ import net.ftb.util.ErrorUtils;
 import net.ftb.util.TrackerUtils;
 
 public class TextureManager extends JDialog {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 2778289475313229882L;
+	
 	private static TexturePack updateTexture;
 	private static ModPack updateModPack;
 	private JPanel contentPane;
@@ -197,8 +202,8 @@ public class TextureManager extends JDialog {
 								if(DownloadUtils.fileExists("texturepacks%5E" + tp.getName().replace(" ", "_") + "%5E" + pack.getDir() + "%5E" + version + "%5E" + tp.getUrl())) {
 									updating = true;
 									TextureManager man = new TextureManager(new JFrame(), true);
-									man.updateTexture = tp;
-									man.updateModPack = pack;
+									TextureManager.updateTexture = tp;
+									TextureManager.updateModPack = pack;
 									man.setVisible(true);
 								}
 							}

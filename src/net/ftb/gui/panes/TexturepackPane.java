@@ -25,7 +25,6 @@ import javax.swing.event.HyperlinkEvent;
 import javax.swing.event.HyperlinkListener;
 
 import net.ftb.data.LauncherStyle;
-import net.ftb.data.Map;
 import net.ftb.data.ModPack;
 import net.ftb.data.TexturePack;
 import net.ftb.data.events.TexturePackListener;
@@ -37,17 +36,22 @@ import net.ftb.log.Logger;
 import net.ftb.util.OSUtils;
 
 public class TexturepackPane extends JPanel implements ILauncherPane, TexturePackListener {
-	private static JPanel texturePacks;
-	public static ArrayList<JPanel> texturePackPanels;
-	private static JScrollPane texturePacksScroll;
-	private static JLabel splash;
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1340402314160449678L;
+	
+	private JPanel texturePacks;
+	public ArrayList<JPanel> texturePackPanels;
+	private JScrollPane texturePacksScroll;
+	private JLabel splash;
 
-	private static JLabel typeLbl;
-	public static String compatible = "All", resolution = "All";
+	private JLabel typeLbl;
+	public String compatible = "All", resolution = "All";
 	private JButton filter;
 	private static boolean texturePacksAdded = false;
 	private static int selectedTexturePack = 0;
-	private static JEditorPane textureInfo;
+	private JEditorPane textureInfo;
 
 	private TexturepackPane instance = this;
 
@@ -152,7 +156,7 @@ public class TexturepackPane extends JPanel implements ILauncherPane, TexturePac
 	/*
 	 * GUI Code to add a texture pack to the selection
 	 */
-	public static void addTexturePack(TexturePack texturePack) {
+	public void addTexturePack(TexturePack texturePack) {
 		if (!texturePacksAdded) {
 			texturePacksAdded = true;
 			texturePacks.removeAll();
@@ -212,7 +216,7 @@ public class TexturepackPane extends JPanel implements ILauncherPane, TexturePac
 		updateTexturePacks();
 	}
 
-	public static void sortTexturePacks() {
+	public void sortTexturePacks() {
 		texturePackPanels.clear();
 		texturePacks.removeAll();
 		currentTexturePacks.clear();
@@ -240,7 +244,7 @@ public class TexturepackPane extends JPanel implements ILauncherPane, TexturePac
 		updateTexturePacks();
 	}
 
-	private static void updateTexturePacks() {
+	private void updateTexturePacks() {
 		for (int i = 0; i < texturePackPanels.size(); i++) {
 			if(selectedTexturePack == i) {
 				
@@ -270,7 +274,7 @@ public class TexturepackPane extends JPanel implements ILauncherPane, TexturePac
 		return texturePacksAdded ? getIndex() : -1;
 	}
 
-	public static void updateFilter() {
+	public void updateFilter() {
 		String filterTextColor = LauncherStyle.getColorAsString(LauncherStyle.getCurrentStyle().filterTextColor);
 		String filterInnerTextColor = LauncherStyle.getColorAsString(LauncherStyle.getCurrentStyle().filterInnerTextColor);
 
@@ -290,7 +294,7 @@ public class TexturepackPane extends JPanel implements ILauncherPane, TexturePac
 		return (currentTexturePacks.size() > 0) ? currentTexturePacks.get(selectedTexturePack).getIndex() : selectedTexturePack;
 	}
 
-	private static int getTexturePackNum() {
+	private int getTexturePackNum() {
 		if(currentTexturePacks.size() > 0) {
 			if(!compatible.equalsIgnoreCase("all") || !resolution.equalsIgnoreCase("all")) {
 				return currentTexturePacks.get((texturePackPanels.size() - 1)).getIndex();
@@ -303,15 +307,15 @@ public class TexturepackPane extends JPanel implements ILauncherPane, TexturePac
 		filter.setText(I18N.getLocaleString("FILTER_SETTINGS"));
 	}
 
-	private static boolean compatibilityCheck(TexturePack tp) {
+	private boolean compatibilityCheck(TexturePack tp) {
 		return (compatible.equals("All") || tp.isCompatible(compatible));
 	}
 	
-	private static boolean resolutionCheck(TexturePack tp) {
+	private boolean resolutionCheck(TexturePack tp) {
 		return (resolution.equals("All") || tp.getResolution().equalsIgnoreCase(resolution));
 	}
 
-	private static boolean textSearch(TexturePack tp) {
+	private boolean textSearch(TexturePack tp) {
 		String searchString = SearchDialog.lastTextureSearch.toLowerCase();
 		return ((searchString.isEmpty()) || tp.getName().toLowerCase().contains(searchString) || tp.getAuthor().toLowerCase().contains(searchString));
 	}

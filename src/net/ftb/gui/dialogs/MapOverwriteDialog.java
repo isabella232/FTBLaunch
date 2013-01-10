@@ -14,6 +14,11 @@ import net.ftb.gui.LaunchFrame;
 import net.ftb.tools.MapManager;
 
 public class MapOverwriteDialog extends JDialog {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -2870242603966919898L;
+	
 	private JPanel panel = new JPanel();
 	private JLabel textOne = new JLabel("Warning! There is already a map by that name!");
 	private JLabel textTwo = new JLabel("Do you want to overwrite?");

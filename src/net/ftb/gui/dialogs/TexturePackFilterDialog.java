@@ -5,7 +5,6 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
-import javax.management.InstanceAlreadyExistsException;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JDialog;
@@ -17,11 +16,16 @@ import net.ftb.data.TexturePack;
 import net.ftb.gui.LaunchFrame;
 import net.ftb.gui.panes.TexturepackPane;
 
-@SuppressWarnings("serial")
+
 public class TexturePackFilterDialog extends JDialog {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 502164632752311498L;
+	
 	private JPanel panel = new JPanel();
 	private JLabel compatibleLbl = new JLabel("Compatible Pack:"), resolutionLbl = new JLabel("Mod Pack Resolution:");
-	private JComboBox<String> compatibleBox, resolutionBox;
+	private JComboBox compatibleBox, resolutionBox;
 	private JButton applyButton = new JButton("Apply Filter"), cancelButton = new JButton("Cancel"), searchButton = new JButton("Search Packs");
 
 	private TexturepackPane instance;
@@ -36,7 +40,6 @@ public class TexturePackFilterDialog extends JDialog {
 		// TODO: Overhaul Filter dialog towards texture packs
 		// Because more than likely ftb won't have a texture pack, and there is no server versions.
 		applyButton.addActionListener(new ActionListener() {
-			@SuppressWarnings("static-access")
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
 				instance.compatible = (String)compatibleBox.getSelectedItem();
@@ -60,7 +63,6 @@ public class TexturePackFilterDialog extends JDialog {
 		});
 	}
 
-	@SuppressWarnings("static-access")
 	private void setupGui() {
 		setIconImage(Toolkit.getDefaultToolkit().getImage(this.getClass().getResource("/image/logo_ftb.png")));
 		setTitle("Filter");
@@ -77,7 +79,7 @@ public class TexturePackFilterDialog extends JDialog {
 				}
 			}
 		}
-		compatibleBox = new JComboBox<String>(comp.toArray(new String[]{}));
+		compatibleBox = new JComboBox(comp.toArray(new String[]{}));
 		
 		ArrayList<String> res = new ArrayList<String>();
 		res.add("All");
@@ -86,7 +88,7 @@ public class TexturePackFilterDialog extends JDialog {
 				res.add(TexturePack.getTexturePack(i).getResolution());
 			}
 		}
-		resolutionBox = new JComboBox<String>(res.toArray(new String[]{}));
+		resolutionBox = new JComboBox(res.toArray(new String[]{}));
 		
 		compatibleBox.setSelectedItem(instance.compatible);
 		resolutionBox.setSelectedItem(instance.resolution);

@@ -10,9 +10,9 @@ public abstract class AnalyticsDispatcher {
 	private int port;
 
 	public AnalyticsDispatcher(String userAgent, String host, int port) {
-		this.userAgent = userAgent;
-		this.host = host;
-		this.port = port;
+		this.setUserAgent(userAgent);
+		this.setHost(host);
+		this.setPort(port);
 	}
 
 	public void dispatch(String analyticsString) {
@@ -43,5 +43,35 @@ public abstract class AnalyticsDispatcher {
 			}
 		}
 		return null;
+	}
+
+	public String getUserAgent() {
+
+		return userAgent;
+	}
+
+	public void setUserAgent(String userAgent) {
+
+		this.userAgent = userAgent;
+	}
+
+	public String getHost() {
+
+		return host;
+	}
+
+	public void setHost(String host) {
+
+		this.host = host;
+	}
+
+	public int getPort() {
+
+		return port;
+	}
+
+	public void setPort(int port) {
+
+		this.port = port;
 	}
 }

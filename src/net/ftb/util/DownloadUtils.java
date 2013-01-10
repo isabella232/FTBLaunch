@@ -279,6 +279,7 @@ public class DownloadUtils extends Thread {
 		serversLoaded = true;
 		if(LaunchFrame.getInstance() != null && LaunchFrame.getInstance().optionsPane != null) {
 			AdvancedOptionsDialog.setDownloadServers();
+			
 		}
 	}
 }

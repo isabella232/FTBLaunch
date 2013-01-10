@@ -18,6 +18,11 @@ import net.ftb.util.ErrorUtils;
 import net.ftb.util.FileUtils;
 
 public class ChooseDir extends JFrame implements ActionListener {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 6196722209979061686L;
+	
 	private OptionsPane optionsPane;
 	private EditModPackDialog editMPD;
 	private InstallDirectoryDialog installDialog;

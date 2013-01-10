@@ -30,6 +30,11 @@ import net.ftb.util.OSUtils;
 import net.ftb.util.TrackerUtils;
 
 public class MapManager extends JDialog {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -5660626231088838458L;
+	
 	private JPanel contentPane;
 	private double downloadedPerc;
 	private final JProgressBar progressBar;
